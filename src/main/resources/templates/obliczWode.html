@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Oblicz zuzycie wody</title>
+    <link rel="stylesheet"  href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../static/css/styles.css" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1 th:text="${podaneImie}">podane imie,zuzycie wody 1 osoby</h1>
+<h1>"wyswietla podane imie </h1>
+<br>
+<br>
+
+
+<form th:action="@{/programrozliczeniawody}" method="post">
+    <label for="razemIloscZuzytejWody">imie</label>;
+    <input type="text" id="razemIloscZuzytejWody" name="razemIloscZuzytejWody" autofocus="autofocus"/>
+    <br>
+    <input type="submit" value="zapisz,oblicz" />
+
+</form>
+
+<h1>Login page</h1>
+<form th:action="@{/app/login}" method="post">
+    <label for="username">Username</label>:
+    <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+
+    <label for="password">Password</label>:
+    <input type="password" id="password" name="password" /> <br />
+    <input type="submit" value="Log in" />
+</form>
+<table border="1px solid black">
+    <thead>
+    <tr>
+        <th>podaneImie</th>
+        <th>Title</th>
+        <th>ilosc wody zuzytej</th>
+        <th>Score </th>
+        <th>Author</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="programrozliczeniawody:}">
+        <td th:text="${programrozliczeniawody.razemIloscZuzytejWody}">razemIloscZuzytejWody</td>
+        <td th:text="${programrozliczeniawody.podaneImie}">title</td>
+        <td th:text="${programrozliczeniawody.woda}">Ilosc wody zuzytej razem</td>
+        <td th:text="${programrozliczeniawody.score}">0</td>
+        <td th:text="${programrozliczeniawody.podanenazwisko}">user</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
